@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { TabsContext } from '../..';
+import { TabsContext } from '../../context';
 
 export const TabsPage: React.FC = () => {
   const { tabId } = useParams<{ tabId: string }>();
-  const tabs = useContext(TabsContext);
+  const tabs = useContext(TabsContext) ?? [];
   const activeTab = tabs.find(tab => tab.id === tabId);
 
   return (
@@ -18,7 +18,9 @@ export const TabsPage: React.FC = () => {
               data-cy="Tab"
               className={tab.id === tabId ? 'is-active' : ''}
             >
-              <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
+              <Link to={`/tabs/${tab.id}`} data-cy="TabLink">
+                {tab.title}
+              </Link>
             </li>
           ))}
         </ul>

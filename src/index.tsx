@@ -2,9 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import { App } from './App';
 import { tabs } from './data';
-import { createContext } from 'react';
-
-export const TabsContext = createContext(tabs);
+import { TabsContext } from './context';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <>
